@@ -1,23 +1,103 @@
+// Estado global
+let whatsappDone = false;
+let youtubeDone = false;
+let countdownActive = false;
+
 /**
- * Genera un código corto aleatorio (4-6 caracteres)
- * @returns {string} Código corto alfanumérico
+ * Marca WhatsApp como completado
  */
-function generateShortCode() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let code = '';
-    for (let i = 0; i < 8; i++) {
-        code += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return code;
+function markWhatsAppDone() {
+    whatsappDone = true;
+    
+    // Mostrar check de WhatsApp
+    document.getElementById('whatsappCheck').style.display = 'flex';
+    
+    // Habilitar YouTube
+    const youtubeBtn = document.getElementById('youtubeBtn');
+    youtubeBtn.disabled = false;
+    
+    // Actualizar estilos del paso 1
+    const step1 = document.getElementById('step1');
+    step1.classList.add('completed');
+    step1.classList.remove('active');
+    
+    // Activar paso 2
+    const step2 = document.getElementById('step2');
+    step2.classList.add('active');
+    step2.classList.remove('disabled');
+    
+    // Guardar estado
+    localStorage.setItem('whatsappDone', 'true');
 }
 
 /**
- * Genera una key con formato CRISS-MODZ-XXXXXXXX
- * @returns {string} Key formateado
+ * Marca YouTube como completado
+ */
+function markYoutubeDone() {
+    youtubeDone = true;
+    
+    // Mostrar check de YouTube
+    document.getElementById('youtubeCheck').style.display = 'flex';
+    
+    // Habilitar generador
+    const generateBtn = document.getElementById('generateBtn');
+    generateBtn.disabled = false;
+    
+    // Actualizar estilos del paso 2
+    const step2 = document.getElementById('step2');
+    step2.classList.add('completed');
+    step2.classList.remove('active');
+    
+    // Activar paso 3
+    const step3 = document.getElementById('step3');
+    step3.classList.add('active');
+    step3.classList.remove('disabled');
+    
+    // Guardar estado
+    localStorage.setItem('youtubeDone', 'true');
+}
+
+/**
+ * Inicia el countdown de 60 segundos
+ */
+function startCountdown() {
+    if (countdownActive) return;
+    
+    countdownActive = true;
+    
+    // Deshabilitar botón
+    const generateBtn = document.getElementById('generateBtn');
+    generateBtn.disabled = true;
+    
+    // Mostrar contador
+    const countdownContainer = document.getElementById('countdownContainer');
+    const countdownTimer = document.getElementById('countdownTimer');
+    const resultContainer = document.getElementById('resultContainer');
+    
+    countdownContainer.style.display = 'block';
+    resultContainer.style.display = 'none';
+    
+    let timeRemaining = 60;
+    countdownTimer.textContent = timeRemaining;
+    
+    const interval = setInterval(() => {
+        timeRemaining--;
+        countdownTimer.textContent = timeRemaining;
+        
+        if (timeRemaining <= 0) {
+            clearInterval(interval);
+            generateKey();
+            countdownContainer.style.display = 'none';
+            countdownActive = false;
+        }
+    }, 1000);
+}
+
+/**
+ * Genera la key CRISS-MODZ-DAH9FA
  */
 function generateKey() {
-    const shortCode = generateShortCode();
-    const key = `CRISS-MODZ-${shortCode}`;
+    const key = 'CRISS-MODZ-DAH9FA';
     
     // Mostrar el contenedor de resultados
     const resultContainer = document.getElementById('resultContainer');
@@ -29,13 +109,12 @@ function generateKey() {
     // Animación suave
     resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     
-    // Guardar en localStorage (opcional)
+    // Guardar en localStorage
     saveKeyToHistory(key);
 }
 
 /**
  * Guarda la key en el historial local
- * @param {string} key - Key a guardar
  */
 function saveKeyToHistory(key) {
     let history = JSON.parse(localStorage.getItem('keyHistory')) || [];
@@ -43,6 +122,7 @@ function saveKeyToHistory(key) {
         key: key,
         timestamp: new Date().toISOString()
     });
+    
     // Guardar solo las últimas 50 keys
     if (history.length > 50) {
         history = history.slice(0, 50);
@@ -78,79 +158,40 @@ function copyToClipboard() {
 }
 
 /**
- * Reinicia el formulario y limpia los resultados
+ * Reinicia el formulario
  */
 function resetForm() {
     const resultContainer = document.getElementById('resultContainer');
     const keyOutput = document.getElementById('keyOutput');
+    const generateBtn = document.getElementById('generateBtn');
+    const countdownContainer = document.getElementById('countdownContainer');
     
     resultContainer.style.display = 'none';
+    countdownContainer.style.display = 'none';
     keyOutput.value = '';
+    generateBtn.disabled = false;
+    countdownActive = false;
     
     // Scroll hacia el botón de generar
-    document.getElementById('generateBtn').focus();
+    generateBtn.focus();
 }
 
 /**
- * Manejo del Enter en inputs
+ * Verifica el estado al cargar la página
  */
-document.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        if (!document.getElementById('resultContainer').style.display || 
-            document.getElementById('resultContainer').style.display === 'none') {
-            generateKey();
-        }
+window.addEventListener('DOMContentLoaded', function() {
+    // Verificar si WhatsApp fue completado
+    if (localStorage.getItem('whatsappDone') === 'true') {
+        markWhatsAppDone();
+    }
+    
+    // Verificar si YouTube fue completado
+    if (localStorage.getItem('youtubeDone') === 'true') {
+        markYoutubeDone();
+    }
+    
+    // Paso 1 siempre activo inicialmente
+    if (!whatsappDone) {
+        document.getElementById('step1').classList.add('active');
     }
 });
-
-/**
- * Descarga la key como QR
- */
-function downloadQR() {
-    const keyOutput = document.getElementById('keyOutput').value;
-    if (!keyOutput) return;
-    
-    // Usar QR Server API (gratuito)
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(keyOutput)}`;
-    
-    const link = document.createElement('a');
-    link.href = qrUrl;
-    link.download = `${keyOutput}.png`;
-    link.click();
-}
-
-/**
- * Muestra el historial de keys
- */
-function showHistory() {
-    const history = JSON.parse(localStorage.getItem('keyHistory')) || [];
-    if (history.length === 0) {
-        alert('No hay keys generadas aún');
-        return;
-    }
-    
-    let historyText = 'HISTORIAL DE KEYS:\n\n';
-    history.forEach((item, index) => {
-        const date = new Date(item.timestamp).toLocaleString();
-        historyText += `${index + 1}. ${item.key} (${date})\n`;
-    });
-    
-    alert(historyText);
-}
-
-/**
- * Copia el key en formato JSON para API
- */
-function copyAsJSON() {
-    const keyOutput = document.getElementById('keyOutput').value;
-    if (!keyOutput) return;
-    
-    const jsonData = JSON.stringify({
-        key: keyOutput,
-        timestamp: new Date().toISOString()
-    }, null, 2);
-    
-    navigator.clipboard.writeText(jsonData).then(() => {
-        alert('JSON copiado al portapapeles');
-    });
-}
