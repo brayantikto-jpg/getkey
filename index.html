@@ -33,24 +33,85 @@
 
             <div class="content cyber-content">
                 <div class="terminal-header">
-                    <span class="terminal-title">GENERADOR_V2.0</span>
+                    <span class="terminal-title">GENERADOR_V3.0</span>
                     <span class="terminal-buttons">⊘ ≡ ✕</span>
                 </div>
 
-                <div class="step cyber-step">
+                <!-- PASO 1: WHATSAPP -->
+                <div class="step cyber-step" id="step1">
                     <div class="step-number cyber-step-num">
                         <div class="number-glow">[1]</div>
                         <span>01</span>
                     </div>
                     <div class="step-content cyber-step-content">
-                        <h2 class="step-title">[ INICIALIZAR GENERADOR ]</h2>
-                        <p class="step-description">PULSA PARA GENERAR KEY ÚNICO DE ACCESO</p>
+                        <h2 class="step-title">[ SEGUIR CANAL WHATSAPP ]</h2>
+                        <p class="step-description">ACCESO OBLIGATORIO - REQUIERE CONFIRMACIÓN</p>
                         
-                        <button id="generateBtn" class="btn btn-cyber-primary" onclick="generateKey()">
+                        <a href="https://whatsapp.com/channel/0029VbBT63UGOj9oDI0IVZ1s" 
+                           target="_blank" 
+                           class="btn btn-cyber-whatsapp"
+                           onclick="markWhatsAppDone(); return false;">
                             <span class="btn-glow"></span>
-                            <span class="btn-text">█ GENERAR KEY █</span>
+                            <span class="btn-text">📱 SEGUIR EN WHATSAPP 📱</span>
+                            <span class="btn-glitch">📱 SEGUIR EN WHATSAPP 📱</span>
+                        </a>
+                        
+                        <div id="whatsappCheck" class="step-check" style="display: none;">
+                            <span class="check-icon">✓</span>
+                            <span class="check-text">WHATSAPP VERIFICADO ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 2: YOUTUBE -->
+                <div class="step cyber-step disabled" id="step2">
+                    <div class="step-number cyber-step-num">
+                        <div class="number-glow">[2]</div>
+                        <span>02</span>
+                    </div>
+                    <div class="step-content cyber-step-content">
+                        <h2 class="step-title">[ SUSCRIBIRSE A YOUTUBE ]</h2>
+                        <p class="step-description">SUSCRIPCIÓN OBLIGATORIA - COMPLETA PASO 1 PRIMERO</p>
+                        
+                        <a href="https://www.youtube.com/@CrissModz" 
+                           target="_blank" 
+                           class="btn btn-cyber-youtube"
+                           onclick="markYoutubeDone(); return false;"
+                           id="youtubeBtn"
+                           disabled>
+                            <span class="btn-glow"></span>
+                            <span class="btn-text">📹 SUSCRIBIRSE EN YOUTUBE 📹</span>
+                            <span class="btn-glitch">📹 SUSCRIBIRSE EN YOUTUBE 📹</span>
+                        </a>
+                        
+                        <div id="youtubeCheck" class="step-check" style="display: none;">
+                            <span class="check-icon">✓</span>
+                            <span class="check-text">YOUTUBE VERIFICADO ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PASO 3: GENERAR KEY -->
+                <div class="step cyber-step disabled" id="step3">
+                    <div class="step-number cyber-step-num">
+                        <div class="number-glow">[3]</div>
+                        <span>03</span>
+                    </div>
+                    <div class="step-content cyber-step-content">
+                        <h2 class="step-title">[ INICIALIZAR GENERADOR ]</h2>
+                        <p class="step-description">COMPLETA LOS PASOS 1 Y 2 PARA CONTINUAR</p>
+                        
+                        <button id="generateBtn" class="btn btn-cyber-primary" onclick="startCountdown()" disabled>
+                            <span class="btn-glow"></span>
+                            <span class="btn-text" id="btnText">█ GENERAR KEY █</span>
                             <span class="btn-glitch">█ GENERAR KEY █</span>
                         </button>
+
+                        <div id="countdownContainer" class="countdown-container" style="display: none;">
+                            <div class="countdown-text">⏱️ TIEMPO DE ESPERA</div>
+                            <div class="countdown-timer" id="countdownTimer">60</div>
+                            <div class="countdown-bar" id="countdownBar"></div>
+                        </div>
 
                         <div id="resultContainer" class="result-container cyber-result" style="display: none;">
                             <div class="result-box cyber-result-box">
@@ -81,14 +142,6 @@
                                     <span class="info-text">GUARDA EN LUGAR SEGURO - NO COMPARTIR</span>
                                 </div>
                             </div>
-
-                            <a href="https://whatsapp.com/channel/0029VbBT63UGOj9oDI0IVZ1s" 
-                               target="_blank" 
-                               class="btn btn-cyber-whatsapp">
-                                <span class="btn-glow"></span>
-                                <span class="btn-text">📱 SEGUIR EN WHATSAPP 📱</span>
-                                <span class="btn-glitch">📱 SEGUIR EN WHATSAPP 📱</span>
-                            </a>
 
                             <button class="btn btn-cyber-secondary" onclick="resetForm()">
                                 <span class="btn-glow"></span>
