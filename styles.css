@@ -11,6 +11,7 @@
     --neon-cyan: #00f5ff;
     --neon-purple: #b537f2;
     --neon-yellow: #ffbe0b;
+    --neon-green: #00ff41;
     --dark-bg: #0a0e27;
     --dark-panel: #1a1f3a;
     --grid-color: rgba(0, 245, 255, 0.1);
@@ -124,8 +125,8 @@ body {
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(0deg, transparent 24%, rgba(0, 245, 255, 0.05) 25%, rgba(0, 245, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 245, 255, 0.05) 75%, rgba(0, 245, 255, 0.05) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(0, 245, 255, 0.05) 25%, rgba(0, 245, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 245, 255, 0.05) 75%, rgba(0, 245, 255, 0.05) 76%, transparent 77%, transparent);
+        linear-gradient(0deg, transparent 24%, rgba(0, 245, 255, 0.05) 25%, rgba(0, 245, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 245, 255, 0.05) 75%, rgba(0, 245, 255, 0.05) 76%, transparent 77%, transparent 100%),
+        linear-gradient(90deg, transparent 24%, rgba(0, 245, 255, 0.05) 25%, rgba(0, 245, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 245, 255, 0.05) 75%, rgba(0, 245, 255, 0.05) 76%, transparent 77%, transparent 100%);
     background-size: 50px 50px;
     pointer-events: none;
     opacity: 0.3;
@@ -318,6 +319,16 @@ body {
     display: flex;
     gap: 20px;
     margin-bottom: 30px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.cyber-step.active {
+    opacity: 1;
+}
+
+.cyber-step.completed {
+    opacity: 0.6;
 }
 
 .cyber-step-num {
@@ -376,6 +387,84 @@ body {
     letter-spacing: 1px;
 }
 
+/* STEP CHECK */
+.step-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid var(--neon-green);
+    padding: 10px 15px;
+    border-radius: 3px;
+    margin-top: 15px;
+    animation: fade-in 0.5s ease-out;
+}
+
+.check-icon {
+    color: var(--neon-green);
+    font-weight: bold;
+    font-size: 1.2em;
+    text-shadow: 0 0 10px var(--neon-green);
+}
+
+.check-text {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green);
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+/* COUNTDOWN */
+.countdown-container {
+    background: rgba(255, 190, 11, 0.1);
+    border: 2px solid var(--neon-yellow);
+    padding: 20px;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 15px;
+    animation: fade-in 0.5s ease-out;
+}
+
+.countdown-text {
+    color: var(--neon-yellow);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px var(--neon-yellow);
+}
+
+.countdown-timer {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 20px var(--neon-yellow);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.countdown-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 245, 255, 0.2);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.countdown-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-yellow), var(--neon-cyan));
+    width: 100%;
+    animation: countdown-reduce 60s linear forwards;
+}
+
+@keyframes countdown-reduce {
+    0% { width: 100%; }
+    100% { width: 0%; }
+}
+
 /* BOTONES */
 .btn {
     position: relative;
@@ -396,6 +485,13 @@ body {
     margin-bottom: 15px;
     overflow: hidden;
     border-radius: 3px;
+    text-decoration: none;
+}
+
+.btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .btn-glow {
@@ -448,12 +544,12 @@ body {
     border-color: var(--neon-cyan);
 }
 
-.btn-cyber-primary:hover {
+.btn-cyber-primary:not(:disabled):hover {
     background: rgba(0, 245, 255, 0.2);
     box-shadow: 0 0 20px var(--neon-cyan);
 }
 
-.btn-cyber-primary:active {
+.btn-cyber-primary:not(:disabled):active {
     transform: scale(0.98);
 }
 
@@ -466,9 +562,23 @@ body {
     text-shadow: 0 0 10px var(--neon-yellow);
 }
 
-.btn-cyber-whatsapp:hover {
+.btn-cyber-whatsapp:not(:disabled):hover {
     background: rgba(255, 190, 11, 0.2);
     box-shadow: 0 0 20px var(--neon-yellow);
+}
+
+.btn-cyber-youtube {
+    border-color: var(--neon-pink);
+}
+
+.btn-cyber-youtube .btn-text {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
+}
+
+.btn-cyber-youtube:not(:disabled):hover {
+    background: rgba(255, 0, 110, 0.2);
+    box-shadow: 0 0 20px var(--neon-pink);
 }
 
 .btn-cyber-secondary {
@@ -729,5 +839,9 @@ body {
 
     .key-input {
         font-size: 0.8em;
+    }
+
+    .countdown-timer {
+        font-size: 2em;
     }
 }
