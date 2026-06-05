@@ -1,72 +1,114 @@
-# 🔑 GetKey - Generador de Keys
+# 🔑 GetKey - Cyberpunk Key Generator
 
-Un sitio web moderno y simple para generar keys (claves únicas) en un solo paso, con integración a WhatsApp.
+## 🚀 Generador de Keys - Tema Cyberpunk Futurista
 
-## ✨ Características
+Generador de keys único con formato `CRISS-MODZ-XXXXXXXX` para tu aplicación Android.
 
-- ✅ Generador de keys con UUID v4
-- ✅ Interfaz moderna y responsiva
-- ✅ Botón para copiar al portapapeles
-- ✅ Integración con canal de WhatsApp
-- ✅ Diseño minimalista y elegante
-- ✅ Compatible con todos los dispositivos
+### ✨ Características
 
-## 🚀 Cómo Usar
+- ⚡ Diseño cyberpunk futurista con neon
+- 🎨 Efectos glitch y scanlines animados
+- 📱 Totalmente responsivo (móvil, tablet, desktop)
+- 🔐 Keys en formato `CRISS-MODZ-XXXXXXXX` (8 caracteres aleatorios)
+- 📋 Copia al portapapeles con un clic
+- 💾 Historial local de keys generadas
+- 🎯 Interfaz intuitiva y atractiva
+- 🌟 Estrellas parpadeantes y efectos neon
 
-1. Abre el archivo `index.html` en tu navegador
-2. Haz clic en el botón "Generar Key"
-3. Se generará un key único
-4. Copia el key o síguenos en WhatsApp
+### 🎮 Cómo Usar
 
-## 📁 Estructura del Proyecto
+1. **Abre la página**
+2. **Haz clic en "█ GENERAR KEY █"**
+3. **Copia la key generada**
+4. **Úsala en tu app Android para login**
+
+### 📝 Formato de Key
+
+```
+CRISS-MODZ-XXXXXXXX
+```
+
+Ejemplos:
+- `CRISS-MODZ-A7K2P9M1`
+- `CRISS-MODZ-B5N8Q3X6`
+- `CRISS-MODZ-Z1W4T7V2`
+
+### 🔧 Tecnología
+
+- **HTML5** - Estructura semántica
+- **CSS3** - Animaciones neon, scanlines, glitch effects
+- **JavaScript Vanilla** - Sin dependencias externas
+- **Fonts**: Orbitron + Space Mono
+
+### 🎨 Efectos Visuales
+
+- ✨ **Scanlines** - Efecto de pantalla CRT clásica
+- ✨ **Glitch Effects** - Distorsión digital en títulos y botones
+- ✨ **Glow Neon** - Resplandor pulsante en elementos
+- ✨ **Fondo de Circuitos** - Patrón de rejilla futurista
+- ✨ **Estrellas** - Ambiente espacial parpadeante
+- ✨ **Cursor Terminal** - Efecto retro de terminal
+
+### 🌈 Paleta de Colores
+
+- **Cyan Neon**: `#00f5ff` - Color primario
+- **Rosa Neon**: `#ff006e` - Acentos
+- **Púrpura Neon**: `#b537f2` - Secundario
+- **Amarillo Neon**: `#ffbe0b` - Advertencias
+
+### 📱 Compatible Con
+
+- ✅ Desktop (Windows, Mac, Linux)
+- ✅ Tablet (iPad, Android Tablet)
+- ✅ Mobile (iOS Safari, Android Chrome)
+
+### 🔐 Seguridad
+
+- No se almacenan datos en servidores
+- Todo se genera localmente en el navegador
+- Las keys se generan de forma aleatoria
+
+### 📁 Estructura del Proyecto
 
 ```
 getkey/
-├── index.html      # Página principal
-├── styles.css      # Estilos CSS
-├── script.js       # Lógica JavaScript
+├── index.html      # Página principal con HTML
+├── styles.css      # Estilos CSS (tema cyberpunk)
+├── script.js       # Lógica JavaScript (generador)
 └── README.md       # Este archivo
 ```
 
-## 🛠️ Tecnologías Utilizadas
+### 🚀 GitHub Pages
 
-- HTML5
-- CSS3 (Gradientes, Flexbox, Animaciones)
-- JavaScript Vanilla (Sin dependencias)
+Esta página está publicada en GitHub Pages:
+**https://brayantikto-jpg.github.io/getkey/**
 
-## 🎨 Características de Diseño
+### 🛠️ Características del Generador
 
-- **Gradiente moderno**: Colores púrpura y azul
-- **Animaciones suaves**: Transiciones elegantes
-- **Diseño responsive**: Funciona en móvil, tablet y desktop
-- **Interfaz intuitiva**: 1 paso para generar la key
+- ✅ Genera keys aleatorios de 8 caracteres
+- ✅ Cada key es único e imposible de duplicar
+- ✅ Interfaz para copiar fácilmente
+- ✅ Opción para generar múltiples keys
+- ✅ Descarga como QR (opcional)
+- ✅ Historial local en el navegador
 
-## 📱 Integración WhatsApp
+### 🔗 Integración
 
-El sitio incluye un botón directo para seguir el canal de WhatsApp:
-[WhatsApp Channel](https://whatsapp.com/channel/0029VbBT63UGOj9oDI0IVZ1s)
+Botón para seguir en WhatsApp:
+[📱 Síguenos en WhatsApp](https://whatsapp.com/channel/0029VbBT63UGOj9oDI0IVZ1s)
 
-## 📋 Características del Generador
+### 📋 Terminal Status
 
-- Genera UUIDs v4 únicos
-- Cada key es diferente e imposible de duplicar
-- Interfaz para copiar fácilmente
-- Opción para generar múltiples keys
-
-## 🔐 Seguridad
-
-- No se almacenan datos en el servidor
-- Todo se genera localmente en el navegador
-- Las keys son generadas de forma segura
-
-## 📄 Licencia
-
-Libre para usar y modificar
-
-## 👤 Autor
-
-brayantikto-jpg
+```
+[ GENERADOR_V2.0 ]
+[✓] CONECTADO
+[✓] OPERATIVO
+[✓] EN LÍNEA
+[ SYS: ONLINE | CPU: 100% | NET: ACTIVE ]
+```
 
 ---
 
-¿Preguntas? ¡Síguenos en [WhatsApp](https://whatsapp.com/channel/0029VbBT63UGOj9oDI0IVZ1s)!
+**© 2026 G3TK3Y CORPORATION - ALL RIGHTS RESERVED**
+
+[Powered by CrissModz]
