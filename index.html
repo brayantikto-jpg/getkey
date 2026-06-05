@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetKey - Cyberpunk Key Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="glitch-bg"></div>
+    
+    <div class="stars"></div>
+    
+    <div class="container">
+        <div class="circuit-board"></div>
+        
+        <div class="card cyber-card">
+            <div class="card-glitch"></div>
+            
+            <div class="header cyber-header">
+                <div class="header-glow"></div>
+                <h1 class="title-glitch">
+                    <span class="text-layer">⚡ G3TK3Y ⚡</span>
+                    <span class="text-layer glitch-1">⚡ G3TK3Y ⚡</span>
+                    <span class="text-layer glitch-2">⚡ G3TK3Y ⚡</span>
+                </h1>
+                <div class="neon-border top"></div>
+                <p class="subtitle-cyber">[ GENERADOR DE KEYS - SISTEMA ACTIVO ]</p>
+                <p class="connection-status">● CONECTADO ● OPERATIVO ● EN LÍNEA</p>
+                <div class="neon-border bottom"></div>
+            </div>
+
+            <div class="content cyber-content">
+                <div class="terminal-header">
+                    <span class="terminal-title">GENERADOR_V2.0</span>
+                    <span class="terminal-buttons">⊘ ≡ ✕</span>
+                </div>
+
+                <div class="step cyber-step">
+                    <div class="step-number cyber-step-num">
+                        <div class="number-glow">[1]</div>
+                        <span>01</span>
+                    </div>
+                    <div class="step-content cyber-step-content">
+                        <h2 class="step-title">[ INICIALIZAR GENERADOR ]</h2>
+                        <p class="step-description">PULSA PARA GENERAR KEY ÚNICO DE ACCESO</p>
+                        
+                        <button id="generateBtn" class="btn btn-cyber-primary" onclick="generateKey()">
+                            <span class="btn-glow"></span>
+                            <span class="btn-text">█ GENERAR KEY █</span>
+                            <span class="btn-glitch">█ GENERAR KEY █</span>
+                        </button>
+
+                        <div id="resultContainer" class="result-container cyber-result" style="display: none;">
+                            <div class="result-box cyber-result-box">
+                                <div class="result-header">
+                                    <span class="result-title">[ KEY GENERADA ]</span>
+                                    <span class="result-status">✓ ÉXITO</span>
+                                </div>
+                                
+                                <div class="key-display cyber-key-display">
+                                    <span class="key-prefix">&gt; </span>
+                                    <input type="text" id="keyOutput" class="key-input" readonly>
+                                    <span class="key-cursor">█</span>
+                                </div>
+
+                                <button class="btn-copy cyber-btn-copy" onclick="copyToClipboard()" title="Copiar al portapapeles">
+                                    <span class="copy-glow"></span>
+                                    <span class="copy-text">[ COPIAR ]</span>
+                                </button>
+                            </div>
+
+                            <div class="info-box cyber-info-box">
+                                <div class="info-line">
+                                    <span class="info-label">[✓]</span>
+                                    <span class="info-text">KEY GENERADA EXITOSAMENTE</span>
+                                </div>
+                                <div class="info-line">
+                                    <span class="info-label">[!]</span>
+                                    <span class="info-text">GUARDA EN LUGAR SEGURO - NO COMPARTIR</span>
+                                </div>
+                            </div>
+
+                            <a href="https://whatsapp.com/channel/0029VbBT63UGOj9oDI0IVZ1s" 
+                               target="_blank" 
+                               class="btn btn-cyber-whatsapp">
+                                <span class="btn-glow"></span>
+                                <span class="btn-text">📱 SEGUIR EN WHATSAPP 📱</span>
+                                <span class="btn-glitch">📱 SEGUIR EN WHATSAPP 📱</span>
+                            </a>
+
+                            <button class="btn btn-cyber-secondary" onclick="resetForm()">
+                                <span class="btn-glow"></span>
+                                <span class="btn-text">[ GENERAR OTRA ]</span>
+                                <span class="btn-glitch">[ GENERAR OTRA ]</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="system-info">
+                    <div class="info-item">
+                        <span class="info-chip">SYS</span>
+                        <span class="info-value">ONLINE</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-chip">CPU</span>
+                        <span class="info-value">100%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-chip">NET</span>
+                        <span class="info-value">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer cyber-footer">
+                <div class="footer-line">
+                    <span>&lt;&lt;&lt;</span>
+                    <span>© 2026 G3TK3Y CORPORATION - ALL RIGHTS RESERVED</span>
+                    <span>&gt;&gt;&gt;</span>
+                </div>
+                <div class="footer-status">[ NO COPY - LICENSED - ENCRYPTED ]</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
