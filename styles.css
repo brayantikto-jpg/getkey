@@ -40,6 +40,33 @@ body {
     overflow-x: hidden;
 }
 
+/* NOTIFICACIONES */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 255, 65, 0.15);
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    padding: 15px 20px;
+    border-radius: 3px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9em;
+    text-shadow: 0 0 10px var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 /* EFECTOS DE FONDO */
 .scanlines {
     position: fixed;
@@ -321,14 +348,22 @@ body {
     margin-bottom: 30px;
     opacity: 0.4;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .cyber-step.active {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .cyber-step.completed {
     opacity: 0.6;
+    pointer-events: auto;
+}
+
+.cyber-step.disabled {
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 .cyber-step-num {
@@ -843,5 +878,11 @@ body {
 
     .countdown-timer {
         font-size: 2em;
+    }
+
+    .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
     }
 }
