@@ -100,7 +100,7 @@ Botón para seguir en WhatsApp:
 ### 📋 Terminal Status
 
 ```
-[ GENERADOR CRISS PING OFFICIAL ]
+[ GENERADOR CRISS PING OFC ]
 [✓] CONECTADO
 [✓] OPERATIVO
 [✓] EN LÍNEA
